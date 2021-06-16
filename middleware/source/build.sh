@@ -36,18 +36,25 @@ function main(){
         BUILD_COMPILER="gcc"
     fi
     COMPILER_VER="himix410"
-    echo "######$BOARD_NAME:$OS_TYPE:$COMPILER_VER######"
+    echo "###### $BOARD_NAME:$OS_TYPE:$COMPILER_VER;$HOS_BUILD_COMPILER;$BUILD_COMPILER ######"
     sed -i "/^CFG_CHIP_TYPE=/cCFG_CHIP_TYPE=$BOARD_NAME" $ROOT_DIR/device/hisilicon/third_party/ffmpeg/cfg.mak
     sed -i "/^CFG_OS_TYPE=/cCFG_OS_TYPE=$OS_TYPE" $ROOT_DIR/device/hisilicon/third_party/ffmpeg/cfg.mak
     sed -i "/^CFG_LINUX_COMPILER_VER=/cCFG_LINUX_COMPILER_VER=$COMPILER_VER" $ROOT_DIR/device/hisilicon/third_party/ffmpeg/cfg.mak
+    sed -i "/^CFG_COMPILE_TYPE=/cCFG_COMPILE_TYPE=clang" $ROOT_DIR/device/hisilicon/third_party/ffmpeg/cfg.mak
+    if [ "$HOS_BUILD_COMPILER" = "gcc" ];then
+        sed -i "/^CFG_COMPILE_TYPE=/cCFG_COMPILE_TYPE=gcc" $ROOT_DIR/device/hisilicon/third_party/ffmpeg/cfg.mak
+    fi
     sed -i "/^CFG_OHOS_BUILD_PATH=/cCFG_OHOS_BUILD_PATH=$OHOS_BUILD_PATH" $ROOT_DIR/device/hisilicon/third_party/ffmpeg/cfg.mak
     sed -i "/^LD=/cLD=$OHOS_BUILD_PATH/clang" $ROOT_DIR/device/hisilicon/third_party/ffmpeg/configure_llvm
     cd $ROOT_DIR/device/hisilicon/third_party/ffmpeg; make clean; make -j; cd -;
+
     cp -rf $ROOT_DIR/device/hisilicon/third_party/ffmpeg/ffmpeg-y/install/lib/libavcodec.so $OUT_DIR/
     cp -rf $ROOT_DIR/device/hisilicon/third_party/ffmpeg/ffmpeg-y/install/lib/libavformat.so $OUT_DIR/
     cp -rf $ROOT_DIR/device/hisilicon/third_party/ffmpeg/ffmpeg-y/install/lib/libavutil.so $OUT_DIR/
 
     cp -rf $CUR_DIR/component/fileformat/mp4/lib/$BUILD_COMPILER/$OS_TYPE/libmp4.so $OUT_DIR/
+    cp -rf $CUR_DIR/component/fileformat/ts/lib/$BUILD_COMPILER/$OS_TYPE/libts.so $OUT_DIR/
+    cp -rf $CUR_DIR/component/fileformat/exif/lib/$BUILD_COMPILER/$OS_TYPE/libexif.so $OUT_DIR/
     cp -rf $CUR_DIR/component/fileformat/common/lib/$BUILD_COMPILER/$OS_TYPE/libfileformat.so $OUT_DIR/
     cp -rf $CUR_DIR/component/recorder_pro/lib/$BUILD_COMPILER/$OS_TYPE/librecorder_pro.so $OUT_DIR/
     cp -rf $CUR_DIR/component/dtcf/lib/$BUILD_COMPILER/$OS_TYPE/libdtcf.so $OUT_DIR/
