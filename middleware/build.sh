@@ -21,22 +21,29 @@ function main(){
     if [ "$HOS_BUILD_COMPILER" == "clang" ]; then
         COMPILER_TYPE=llvm
     fi
-    cd $CUR_DIR/source
+    COMPILER_VER="himix100"
+    if [ "$BOARD_NAME" = "hi3516dv300" ];then
+        COMPILER_VER="himix200"
+    fi
     if [ "$HOS_KERNEL_TYPE" == "liteos_a" ]; then
         if [ "$COMPILER_TYPE" == "llvm" ]; then
-	    ./build.sh $OUT_DIR $BOARD_NAME $HOS_KERNEL_TYPE $COMPILER_TYPE $CC_PATH
-        else
-	    ./build_another.sh $OUT_DIR $BOARD_NAME $HOS_KERNEL_TYPE $COMPILER_TYPE $CC_PATH
+            COMPILER_VER="himix410"
         fi
     elif [ "$HOS_KERNEL_TYPE" == "linux" ]; then
         if [ "$STORAGE_TYPE" == "emmc" ]; then
-	    ./build.sh $OUT_DIR $BOARD_NAME $HOS_KERNEL_TYPE $COMPILER_TYPE $CC_PATH
-        else
-	    ./build_another.sh $OUT_DIR $BOARD_NAME $HOS_KERNEL_TYPE $COMPILER_TYPE $CC_PATH
+	          COMPILER_VER="himix410"
         fi
     fi
-    cd $CUR_DIR
+
+    cd $CUR_DIR/source && ./build.sh $OUT_DIR $BOARD_NAME $HOS_KERNEL_TYPE $COMPILER_TYPE $CC_PATH $COMPILER_VER
 }
+
+if [ "x" != "x$7" ]; then
+export SYSROOT_PATH=$7
+fi
+if [ "x" != "x$8" ]; then
+export ARCH_CFLAGS="$8"
+fi
 
 main "$@"
 

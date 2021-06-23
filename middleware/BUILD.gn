@@ -21,7 +21,10 @@ if (defined(ohos_lite)) {
       if (ohos_build_compiler_dir != "") {
         clang_dir = rebase_path("${ohos_build_compiler_dir}/bin")
       }
-      command = "./build.sh ${outdir} ${board} ${ohos_kernel_type} ${ohos_build_compiler} ${storage_type} ${clang_dir}"
+      sysroot_path = rebase_path(ohos_current_sysroot)
+      arch_cflags = string_join(" ", target_arch_cflags)
+      arch_cflags += " --target=$target_triple"
+      command = "./build.sh ${outdir} ${board} ${ohos_kernel_type} ${ohos_build_compiler} ${storage_type} ${clang_dir} ${sysroot_path} \"${arch_cflags}\""
     }
 } else {
     group("middleware_group") {
