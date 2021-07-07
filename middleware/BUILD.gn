@@ -41,53 +41,59 @@ if (defined(ohos_lite)) {
         ":ts",
       ]
     }
+    
+    if (use_musl) {
+      sub_path = "linux_standard"
+    } else {
+      sub_path = "ext"
+    }
     ohos_prebuilt_shared_library("hitimer") {
-      source = "source/common/hitimer/lib/ext/libhitimer.so"
+      source = "source/common/hitimer/lib/llvm/$sub_path/libhitimer.so"
       subsystem_name = "hisilicon_products"
     }
 
     ohos_prebuilt_shared_library("mbuf") {
-      source = "source/common/mbuffer/lib/ext/libmbuf.so"
+      source = "source/common/mbuffer/lib/llvm/$sub_path/libmbuf.so"
       subsystem_name = "hisilicon_products"
     }
 
     ohos_prebuilt_shared_library("messagehandler") {
-      source = "source/common/msghandler/lib/ext/libmessagehandler.so"
+      source = "source/common/msghandler/lib/llvm/$sub_path/libmessagehandler.so"
       subsystem_name = "hisilicon_products"
     }
 
     ohos_prebuilt_shared_library("mwlog") {
-      source = "source/common/log/lib/ext/libmwlog.so"
+      source = "source/common/log/lib/llvm/$sub_path/libmwlog.so"
       subsystem_name = "hisilicon_products"
     }
 
     ohos_prebuilt_shared_library("dtcf") {
-      source = "source/component/dtcf/lib/ext/libdtcf.so"
+      source = "source/component/dtcf/lib/llvm/$sub_path/libdtcf.so"
       subsystem_name = "hisilicon_products"
     }
 
     ohos_prebuilt_shared_library("recorder_pro") {
-      source = "source/component/recorder_pro/lib/ext/librecorder_pro.so"
+      source = "source/component/recorder_pro/lib/llvm/$sub_path/librecorder_pro.so"
       subsystem_name = "hisilicon_products"
     }
 
     ohos_prebuilt_shared_library("exif") {
-      source = "source/component/fileformat/exif/lib/ext/libexif.so"
+      source = "source/component/fileformat/exif/lib/llvm/$sub_path/libexif.so"
       subsystem_name = "hisilicon_products"
     }
 
     ohos_prebuilt_shared_library("fileformat") {
-      source = "source/component/fileformat/common/lib/ext/libfileformat.so"
+      source = "source/component/fileformat/common/lib/llvm/$sub_path/libfileformat.so"
       subsystem_name = "hisilicon_products"
     }
 
     ohos_prebuilt_shared_library("mp4") {
-      source = "source/component/fileformat/mp4/lib/ext/libmp4.so"
+      source = "source/component/fileformat/mp4/lib/llvm/$sub_path/libmp4.so"
       subsystem_name = "hisilicon_products"
     }
 
     ohos_prebuilt_shared_library("ts") {
-      source = "source/component/fileformat/ts/lib/ext/libts.so"
+      source = "source/component/fileformat/ts/lib/llvm/$sub_path/libts.so"
       subsystem_name = "hisilicon_products"
     }
 
