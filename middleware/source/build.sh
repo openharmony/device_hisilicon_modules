@@ -27,28 +27,17 @@ function main(){
     CUR_DIR=$(cd $(dirname "$0");pwd)
     ROOT_DIR=$CUR_DIR/../../../../..
     unset OS_TYPE
-    COMPILER_TYPE=$BUILD_COMPILER
-    if [ "$HOS_KERNEL_TYPE" = "liteos_a" ];then
+
+    if [ "$HOS_KERNEL_TYPE" == "liteos_a" ];then
         OS_TYPE="ohos"
-    elif [ "$HOS_KERNEL_TYPE" = "linux" ];then
+    elif [ "$HOS_KERNEL_TYPE" == "linux" ];then
         OS_TYPE="linux"
     fi
-    if [ "$BUILD_COMPILER" = "llvm" ];then
-        COMPILER_TYPE="clang"
-    fi
-    echo "###### $BOARD_NAME:$OS_TYPE:$COMPILER_VER;$COMPILER_TYPE;$BUILD_COMPILER ######"
-    cat <<-EOF >$ROOT_DIR/device/hisilicon/third_party/ffmpeg/cfg.mak
-	CFG_CHIP_TYPE=$BOARD_NAME
-	CFG_OS_TYPE=$OS_TYPE
-	CFG_COMPILE_TYPE=$COMPILER_TYPE
-	CFG_LINUX_COMPILER_VER=$COMPILER_VER
-	CFG_OHOS_BUILD_PATH=$OHOS_BUILD_PATH
-	EOF
-    cd $ROOT_DIR/device/hisilicon/third_party/ffmpeg; make clean; make -j; cd -;
 
-    cp -rf $ROOT_DIR/device/hisilicon/third_party/ffmpeg/ffmpeg-y/install/lib/libavcodec.so $OUT_DIR/
-    cp -rf $ROOT_DIR/device/hisilicon/third_party/ffmpeg/ffmpeg-y/install/lib/libavformat.so $OUT_DIR/
-    cp -rf $ROOT_DIR/device/hisilicon/third_party/ffmpeg/ffmpeg-y/install/lib/libavutil.so $OUT_DIR/
+    #######################################
+    # build ffmpeg library
+    #######################################
+    ./ffmpeg_adapt/build_ffmpeg.sh $OUT_DIR $BOARD_NAME $OS_TYPE $BUILD_COMPILER $OHOS_BUILD_PATH $COMPILER_VER
 
     cp -rf $CUR_DIR/component/fileformat/mp4/lib/$BUILD_COMPILER/$OS_TYPE/libmp4.so $OUT_DIR/
     cp -rf $CUR_DIR/component/fileformat/ts/lib/$BUILD_COMPILER/$OS_TYPE/libts.so $OUT_DIR/
