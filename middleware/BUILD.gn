@@ -23,7 +23,7 @@ if (defined(ohos_lite)) {
       }
       sysroot_path = rebase_path(ohos_current_sysroot)
       arch_cflags = string_join(" ", target_arch_cflags)
-      arch_cflags += " --target=$target_triple"
+      arch_cflags += " --target=$target_triple -fuse-ld=lld --rtlib=compiler-rt"
       command = "./build.sh ${outdir} ${board} ${ohos_kernel_type} ${ohos_build_compiler} ${storage_type} ${clang_dir} ${sysroot_path} \"${arch_cflags}\""
     }
 } else {
