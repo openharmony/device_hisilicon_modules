@@ -52,8 +52,11 @@ configure_attr=" --prefix=./install \
     --disable-muxers \
     --enable-demuxer=mov\
     --enable-demuxer=mpegts\
+    --enable-demuxer=mp3 \
     --enable-parser=hevc \
     --enable-parser=h264 \
+    --enable-parser=mp2 \
+    --enable-parser=mp3 \
     --disable-neon \
     --disable-inline-asm \
     --disable-asm \
