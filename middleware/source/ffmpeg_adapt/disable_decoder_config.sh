@@ -55,8 +55,8 @@ configure_attr=" --prefix=./install \
     --enable-demuxer=mp3 \
     --enable-parser=hevc \
     --enable-parser=h264 \
-    --enable-parser=mp2 \
-    --enable-parser=mp3 \
+    --enable-decoder=mp2 \
+    --enable-decoder=mp3 \
     --disable-neon \
     --disable-inline-asm \
     --disable-asm \
