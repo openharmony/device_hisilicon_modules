@@ -62,8 +62,6 @@ cancel_opt HAVE_SYMVER_ASM_LABEL
 #cancel_opt CONFIG_FAANDCT
 #cancel_opt CONFIG_FAANIDCT
 #cancel_opt CONFIG_FDCTDSP
-#cancel_opt 
-
 
 make clean
 

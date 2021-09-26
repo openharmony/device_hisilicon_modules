@@ -34,9 +34,6 @@ $(TESTPROGS): THISLIB = $(SUBDIR)$(LIBNAME)
 $(LIBOBJS): CPPFLAGS += -DBUILDING_$(NAME)
 
 $(TESTPROGS) $(TOOLS): %$(EXESUF): %.o
-	echo "###########################################"
-	echo "##### $$(LD) $(LDFLAGS) $(LDEXEFLAGS) $$(LD_O) $$(filter %.o,$$^) $$(THISLIB) $(FFEXTRALIBS) $$(EXTRALIBS-$$(*F)) $$(ELIBS)"
-	echo "###########################################"
 	$$(LD) $(LDFLAGS) $(LDEXEFLAGS) $$(LD_O) $$(filter %.o,$$^) $$(THISLIB) $(FFEXTRALIBS) $$(EXTRALIBS-$$(*F)) $$(ELIBS)
 
 $(SUBDIR)lib$(NAME).version: $(SUBDIR)version.h | $(SUBDIR)
@@ -52,9 +49,6 @@ $(SUBDIR)$(SLIBNAME):
 
 $(SUBDIR)$(SLIBNAME_WITH_MAJOR): $(OBJS) $(SLIBOBJS) $(SUBDIR)lib$(NAME).ver
 	$(SLIB_CREATE_DEF_CMD)
-	echo "###########################################"
-	echo "########### $$(LD) $(SHFLAGS) $(LDFLAGS) $(LDSOFLAGS) $$(LD_O) $$(filter %.o,$$^) $(FFEXTRALIBS)"
-	echo "###########################################"
 	$$(LD) $(SHFLAGS) $(LDFLAGS) $(LDSOFLAGS) $$(LD_O) $$(filter %.o,$$^) $(FFEXTRALIBS)
 	$(SLIB_EXTRA_CMD)
 

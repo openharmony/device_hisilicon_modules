@@ -7,15 +7,7 @@ CFG_LINUX_COMPILER_VER=$4
 CFG_OHOS_BUILD_PATH=$5
 
 echo "CFG_CHIP_TYPE=${CFG_CHIP_TYPE} CFG_OS_TYPE=${CFG_OS_TYPE} CFG_LINUX_COMPILER_VER=${CFG_LINUX_COMPILER_VER} CFG_OHOS_BUILD_PATH=${CFG_OHOS_BUILD_PATH}"
-#if [ "${CFG_COMPILE_TYPE}" == "clang" ]; then
 CFG_SDK_TOOLCHAIN=$CFG_OHOS_BUILD_PATH/
-#else
-#    if [ "${CFG_OS_TYPE}" == "ohos" ]; then
-#        CFG_SDK_TOOLCHAIN=$CFG_OHOS_BUILD_PATH/arm-linux-ohoseabi-
-#    else
-#        CFG_SDK_TOOLCHAIN=arm-$CFG_LINUX_COMPILER_VER-linux-
-#    fi
-#fi
 
 configure_attr=" --prefix=./install \
     --disable-autodetect \
@@ -96,7 +88,7 @@ configure_attr+=" --cpu=cortex-a7 --arch=armv7-a --cross-prefix=${CFG_SDK_TOOLCH
 fi
 
 if [ "${CFG_CHIP_TYPE}" == "hi3516dv300" ]; then
-echo "###########hi3516dv300 =? ${CFG_CHIP_TYPE}########"
+echo "hi3516dv300 =? ${CFG_CHIP_TYPE}"
 #configure_attr+=" --cpu=cortex-a7 --arch=armv7-a --cross-prefix=${CFG_SDK_TOOLCHAIN} "
 fi
 
@@ -105,10 +97,9 @@ echo "hi3518ev300 =? ${CFG_CHIP_TYPE}"
 configure_attr+=" --cpu=cortex-a7 --arch=armv7-a --cross-prefix=${CFG_SDK_TOOLCHAIN} "
 fi
 
-echo "###################################"
 echo ${configure_attr}
 echo ${CFG_SDK_TOOLCHAIN}
-echo "###################################"
+
 export http_proxy=""
 export https_proxy=""
 export no_proxy=""
