@@ -1,5 +1,5 @@
+# Copyright (c) Hisilicon Technologies Co., Ltd. 2021-2022. All rights reserved.
 #!/bin/sh
-
 
 function cancel_opt
 {
