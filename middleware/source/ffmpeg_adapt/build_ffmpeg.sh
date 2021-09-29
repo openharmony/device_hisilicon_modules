@@ -1,4 +1,6 @@
+# Copyright (c) Hisilicon Technologies Co., Ltd. 2021-2022. All rights reserved.
 #!/bin/sh
+
 # error out on errors
 set -e
 OUT_DIR="$1"
