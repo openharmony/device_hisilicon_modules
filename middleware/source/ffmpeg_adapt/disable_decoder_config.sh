@@ -1,3 +1,5 @@
+# Copyright (c) Hisilicon Technologies Co., Ltd. 2021-2022. All rights reserved.
+
 echo `pwd`
 CUR_DIR=$(pwd)
 CFG_CHIP_TYPE=$1
