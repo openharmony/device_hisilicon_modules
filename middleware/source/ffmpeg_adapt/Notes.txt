@@ -3,6 +3,7 @@ The users should follow the license of the original file.
 
 ##Changed file
 configure_llvm
+configure
 library.mak
 Makefile_llvm
 
