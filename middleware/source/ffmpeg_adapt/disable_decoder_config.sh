@@ -47,6 +47,7 @@ configure_attr=" --prefix=./install \
     --enable-demuxer=mov\
     --enable-demuxer=mpegts\
     --enable-demuxer=mp3 \
+    --enable-demuxer=aac \
     --enable-parser=hevc \
     --enable-parser=h264 \
     --enable-decoder=mp2 \
