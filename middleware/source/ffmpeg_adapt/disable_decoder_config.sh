@@ -52,6 +52,7 @@ configure_attr=" --prefix=./install \
     --enable-parser=h264 \
     --enable-decoder=mp2 \
     --enable-decoder=mp3 \
+    --enable-decoder=aac \
     --disable-neon \
     --disable-inline-asm \
     --disable-asm \
