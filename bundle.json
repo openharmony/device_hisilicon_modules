@@ -1,0 +1,56 @@
+{
+    "name": "@ohos/device_hisilicon_modules",
+    "version": "",
+    "description": "Middleware libraries | 中间件库",
+    "homePage": "https://gitee.com/openharmony",
+    "license": "End User License Agreement",
+    "repository": "https://gitee.com/openharmony/device_hisilicon_modules",
+    "domain": "os",
+    "language": "",
+    "publishAs": "code-segment",
+    "private": false,
+    "scripts": {},
+    "tags": [
+        "device"
+    ],
+    "keywords": [
+        "device",
+        "hisilicon",
+        "modules"
+    ],
+    "envs": [],
+    "dirs": [],
+    "author": {
+        "name": "",
+        "email": "",
+        "url": ""
+    },
+    "contributors": [
+        {
+            "name": "",
+            "email": "",
+            "url": ""
+        }
+    ],
+    "segment": {
+        "destPath": "device/hisilicon/modules"
+    },
+    "component": {
+        "name": "device_hisilicon_modules",
+        "subsystem": "",
+        "syscap": [],
+        "features": [],
+        "adapted_system_type": [],
+        "rom": "",
+        "ram": "",
+        "deps": {
+            "components": [],
+            "third_party": []
+        },
+        "build": {
+            "sub_component": [],
+            "inner_kits": [],
+            "test": []
+        }
+    }
+}
